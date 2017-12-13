@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot.iml" filepath="$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot_main.iml" group="com.petarkolaric.robot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.petarkolaric.robot_test.iml" group="com.petarkolaric.robot" />
+    </modules>
+  </component>
+</project>
