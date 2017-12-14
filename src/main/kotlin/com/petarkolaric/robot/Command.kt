@@ -58,6 +58,12 @@ class ReportCommand: Command {
 
 class PlaceCommand(val xPosition: Int, val yPosition: Int, val direction: Direction): Command {
     override fun execute(robot: Robot?, table: Table): Robot {
+        if (xPosition >= table.xSize ||
+            xPosition < 0 ||
+            yPosition >= table.ySize ||
+            yPosition < 0) {
+            throw Exception("This will place the robot off the table")
+        }
         return Robot(xPosition, yPosition, direction)
     }
 }

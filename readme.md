@@ -25,5 +25,3 @@ To run the application, type `./gradlew run`
 ##### Testing the application
 
 To test the application, type `./gradlew test`
-
-start of application shouldnt be in main

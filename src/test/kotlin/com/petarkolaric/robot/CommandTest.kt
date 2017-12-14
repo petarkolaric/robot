@@ -162,4 +162,24 @@ class CommandTest {
         assertEquals(robot.y, 2)
         assertEquals(robot.direction, Direction.WEST)
     }
+
+    @Test(expected = Exception::class)
+    fun `place command should not place robot off top of table`() {
+        PlaceCommand(3, 5, Direction.NORTH).execute(null, Table(5, 5))
+    }
+
+    @Test(expected = Exception::class)
+    fun `place command should not place robot off bottom of table`() {
+        PlaceCommand(3, -1, Direction.NORTH).execute(null, Table(5, 5))
+    }
+
+    @Test(expected = Exception::class)
+    fun `place command should not place robot off east of table`() {
+        PlaceCommand(5, 3, Direction.NORTH).execute(null, Table(5, 5))
+    }
+
+    @Test(expected = Exception::class)
+    fun `place command should not place robot off west of table`() {
+        PlaceCommand(-1, 3, Direction.NORTH).execute(null, Table(5, 5))
+    }
 }
