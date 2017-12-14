@@ -16,6 +16,8 @@ In this solution I have just used a generic exception type, with the message of 
 
 I also made a decision to take input from the command line rather than from a file. This may also work with code redirected from a file, however this has not been tested.
 
+I also chose to make the robots position zero indexed, rather than 1 indexed. This is to make it slightly simpler, but could easily be changed.
+
 ##### Running the application
 
 To run the application, type `./gradlew run`
@@ -24,5 +26,4 @@ To run the application, type `./gradlew run`
 
 To test the application, type `./gradlew test`
 
-robot mover shouldnt take a robot??
 start of application shouldnt be in main
