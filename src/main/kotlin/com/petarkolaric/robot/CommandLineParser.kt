@@ -17,7 +17,7 @@ class CommandParser {
                 "RIGHT" -> return RightCommand()
                 "MOVE" -> return MoveCommand()
                 "REPORT" -> return ReportCommand()
-                else -> throw Exception("Invalid input")
+                else -> throw Exception("Invalid command")
             }
         }
     }

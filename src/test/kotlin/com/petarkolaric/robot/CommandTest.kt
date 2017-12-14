@@ -34,28 +34,28 @@ class CommandTest {
         var robot = Robot(3, 3, Direction.NORTH)
         val command = LeftCommand()
 
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.WEST)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.SOUTH)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.EAST)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.NORTH)
     }
 
     @Test
     fun `right command should rotate right`() {
-        val robot = Robot(3, 3, Direction.NORTH)
+        var robot = Robot(3, 3, Direction.NORTH)
         val command = RightCommand()
 
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.EAST)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.SOUTH)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.WEST)
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.direction, Direction.NORTH)
     }
 
@@ -89,33 +89,33 @@ class CommandTest {
 
     @Test
     fun `should move robot north if facing north`() {
-        val robot = Robot(2, 2, Direction.NORTH)
+        var robot = Robot(2, 2, Direction.NORTH)
         val command = MoveCommand()
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.y, 3)
     }
 
     @Test
     fun `should move robot east if facing east`() {
-        val robot = Robot(2, 2, Direction.EAST)
+        var robot = Robot(2, 2, Direction.EAST)
         val command = MoveCommand()
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.x, 3)
     }
 
     @Test
     fun `should move robot south if facing south`() {
-        val robot = Robot(2, 2, Direction.SOUTH)
+        var robot = Robot(2, 2, Direction.SOUTH)
         val command = MoveCommand()
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.y, 1)
     }
 
     @Test
     fun `should move robot west if facing west`() {
-        val robot = Robot(2, 2, Direction.WEST)
+        var robot = Robot(2, 2, Direction.WEST)
         val command = MoveCommand()
-        command.execute(robot, Table())
+        robot = command.execute(robot, Table())
         assertEquals(robot.x, 1)
     }
 
@@ -123,9 +123,43 @@ class CommandTest {
     fun `should place robot`() {
         val command = PlaceCommand(2, 4, Direction.NORTH)
         var robot: Robot? = null
-        command.execute(robot, Table())
-        assertEquals(robot!!.x, 2)
+        robot = command.execute(robot, Table())
+        assertEquals(robot.x, 2)
         assertEquals(robot.y, 4)
         assertEquals(robot.direction, Direction.NORTH)
+    }
+
+    @Test
+    fun `left command does not change passed in robot`() {
+        val robot = Robot(2, 2, Direction.WEST)
+        val command = LeftCommand()
+        command.execute(robot, Table())
+        assertEquals(robot.direction, Direction.WEST)
+    }
+
+    @Test
+    fun `right command does not change passed in robot`() {
+        val robot = Robot(2, 2, Direction.WEST)
+        val command = RightCommand()
+        command.execute(robot, Table())
+        assertEquals(robot.direction, Direction.WEST)
+    }
+
+    @Test
+    fun `move command does not change passed in robot`() {
+        val robot = Robot(2, 2, Direction.NORTH)
+        val command = MoveCommand()
+        command.execute(robot, Table())
+        assertEquals(robot.y, 2)
+    }
+
+    @Test
+    fun `place command does not change passed in robot`() {
+        val robot = Robot(1, 2, Direction.WEST)
+        val command = PlaceCommand(3, 3, Direction.NORTH)
+        command.execute(robot, Table())
+        assertEquals(robot.x, 1)
+        assertEquals(robot.y, 2)
+        assertEquals(robot.direction, Direction.WEST)
     }
 }

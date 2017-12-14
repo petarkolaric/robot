@@ -3,9 +3,9 @@ package com.petarkolaric.robot
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
-    println("Please enter a command:")
     val robotMover = RobotMover()
     var nextLine: String?
+    println("Please enter a command:")
     while (true) {
         nextLine = readLine()
         if (nextLine == null) {
